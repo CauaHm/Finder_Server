@@ -3,14 +3,15 @@ import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import authRoutes from "./routes/authRoute.js"
-import authenticateToken from '../controllers/authController.js';
+import { authenticateToken } from './controllers/authController.js';
+import { connectDB } from '../db.js'
 dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
 app.use(cors());
 app.use(express.json());
-
+connectDB();
 app.get('/', (req, res) => res.send('API do Finder está online 🚀'));
 
 // Rotas de autenticação
