@@ -29,4 +29,4 @@ app.get('/me', authenticateToken, async (req, res) => {
 
 
 const PORT = process.env.PORT || 5000;
-module.exports = app;
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
