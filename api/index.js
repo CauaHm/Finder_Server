@@ -9,6 +9,27 @@ dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
+const allowedOrigins = [
+  'http://localhost:5000', 
+  'https://finder-react-ten.vercel.app/'
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+
+    if (!origin) return callback(null, true); 
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'] 
+};
+
 app.use(cors());
 app.use(express.json());
 connectDB();
