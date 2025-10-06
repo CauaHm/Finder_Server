@@ -2,9 +2,9 @@ import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import authRoutes from "./routes/authRoute.js"
-import { authenticateToken } from './controllers/authController.js';
-import { connectDB } from '../db.js'
+import authRoutes from "../routes/authRoute.js"
+import { authenticateToken } from '../controllers/authController.js';
+import { connectDB } from '../../db.js'
 dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
@@ -29,4 +29,4 @@ app.get('/me', authenticateToken, async (req, res) => {
 
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+module.exports = app;
