@@ -2,9 +2,9 @@ import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import authRoutes from "../routes/authRoute.js"
-import { authenticateToken } from '../controllers/authController.js';
-import { connectDB } from '../../db.js'
+import authRoutes from "../src/routes/authRoute.js"
+import { authenticateToken } from '../src/controllers/authController.js';
+import { connectDB } from '../db.js'
 dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
