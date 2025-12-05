@@ -7,6 +7,10 @@ const prisma = new PrismaClient();
 export const register = async (req, res) => {
   const { name, email, password } = req.body;
 
+  if (!name || !email || !password) {
+    return res.status(422).json({ message: 'Preencha todos os campos!' });
+  }
+
   try {
     // Verifica se o email já existe
     const userExists = await prisma.user.findUnique({ where: { email } });

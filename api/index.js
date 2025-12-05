@@ -11,6 +11,7 @@ const prisma = new PrismaClient();
 
 const allowedOrigins = [
   "http://localhost:5000",
+  "http://localhost:5173",
   "https://finder-react-ten.vercel.app/",
 ];
 
